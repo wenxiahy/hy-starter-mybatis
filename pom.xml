@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wenxiahy</groupId>
+    <artifactId>hy-starter-mybatis</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <name>hy-starter-mybatis</name>
+    <description>HY Starter Mybatis</description>
+
+    <properties>
+        <!-- Java version -->
+        <java.version>1.8</java.version>
+        <source.version>1.8</source.version>
+        <target.version>1.8</target.version>
+
+        <!-- Encoding -->
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>e5xh-releases</id>
+            <url>http://47.75.199.218:8081/repository/maven-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>e5xh-snapshots</id>
+            <url>http://47.75.199.218:8081/repository/maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.6.RELEASE</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
