@@ -2,6 +2,8 @@ package com.wenxiahy.hy.mybatis.support;
 
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -29,6 +31,8 @@ import java.util.stream.Collectors;
  * @Date 2020-12-25
  */
 public class MapperScannerRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, EnvironmentAware {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MapperScannerRegistrar.class);
 
     private Environment environment;
 
@@ -128,8 +132,9 @@ public class MapperScannerRegistrar implements ImportBeanDefinitionRegistrar, Re
             String value = environment.getProperty(pro.substring(2, pro.length() - 1));
 
             if (null == value) {
-                throw new IllegalArgumentException("property " + pro + " can not find!!!");
+                LOGGER.warn("The value of property '{}' is null", pro);
             }
+
             return value;
         }
         return pro;

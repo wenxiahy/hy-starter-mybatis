@@ -20,7 +20,7 @@ import javax.sql.DataSource;
  * @Date 2020-12-25
  */
 @Configuration
-@MapperScan(basePackages = {"${mybatis.mapperScan.basePackages}"}, sqlSessionTemplateRef = "mainSqlSessionTemplate")
+@MapperScan(basePackages = {"${mybatis.mapperScan.basePackages.main}"}, sqlSessionTemplateRef = "mainSqlSessionTemplate")
 public class MainDataSourceConfig {
 
     @Bean("mainDataSource")

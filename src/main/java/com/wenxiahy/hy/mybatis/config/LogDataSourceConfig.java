@@ -16,32 +16,32 @@ import javax.sql.DataSource;
 /**
  * @Author zhouw
  * @Description
- * @Date 2020-12-25
+ * @Date 2020-12-27
  */
 @Configuration
-@MapperScan(basePackages = {"${mybatis.mapperScan.basePackages.order}"}, sqlSessionTemplateRef = "orderSqlSessionTemplate")
-public class OrderDataSourceConfig {
+@MapperScan(basePackages = {"${mybatis.mapperScan.basePackages.log}"}, sqlSessionTemplateRef = "logSqlSessionTemplate")
+public class LogDataSourceConfig {
 
-    @Bean("orderDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.order")
+    @Bean("logDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.log")
     public DataSource dataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean("orderSqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("orderDataSource") DataSource dataSource) throws Exception {
+    @Bean("logSqlSessionFactory")
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("logDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
         return factoryBean.getObject();
     }
 
-    @Bean("orderSqlSessionTemplate")
-    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("orderSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean("logSqlSessionTemplate")
+    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("logSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
-    @Bean("orderTransactionManager")
-    public DataSourceTransactionManager transactionManager(@Qualifier("orderDataSource") DataSource dataSource) {
+    @Bean("logTransactionManager")
+    public DataSourceTransactionManager transactionManager(@Qualifier("logDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 }
