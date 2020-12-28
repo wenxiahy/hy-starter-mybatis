@@ -144,6 +144,7 @@ public class MapperScannerRegistrar implements ImportBeanDefinitionRegistrar, Re
 
             return value;
         }
+
         return pro;
     }
 
