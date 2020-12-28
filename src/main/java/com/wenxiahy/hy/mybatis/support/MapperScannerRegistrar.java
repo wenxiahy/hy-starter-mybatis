@@ -112,6 +112,13 @@ public class MapperScannerRegistrar implements ImportBeanDefinitionRegistrar, Re
         basePackages.addAll(Arrays.stream(annoAttrs.getClassArray("basePackageClasses")).map(ClassUtils::getPackageName)
                 .collect(Collectors.toList()));
 
+        /**
+         * 如果没有配置basePackages，就不注册bean
+         */
+        if (basePackages.isEmpty()) {
+            return;
+        }
+
         String lazyInitialization = annoAttrs.getString("lazyInitialization");
         if (StringUtils.hasText(lazyInitialization)) {
             builder.addPropertyValue("lazyInitialization", lazyInitialization);
