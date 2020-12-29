@@ -29,11 +29,11 @@
     <distributionManagement>
         <repository>
             <id>e5xh-releases</id>
-            <url>http://47.75.199.218:8081/repository/maven-releases</url>
+            <url>http://localhost:8081/repository/maven-releases</url>
         </repository>
         <snapshotRepository>
             <id>e5xh-snapshots</id>
-            <url>http://47.75.199.218:8081/repository/maven-snapshots</url>
+            <url>http://localhost:8081/repository/maven-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
